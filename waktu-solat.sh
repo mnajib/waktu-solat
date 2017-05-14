@@ -41,7 +41,7 @@ bash $getzon > $zonelist
 # grep/awk/sed zone code
 #zonecode=$zone
 zonecode=`cat $zonelist | grep -i "$zone" | awk '{ print $1 }'| sed 's/"//g' | sed 's/,//g' | head -1`
-echo "zonecode=$zonecode"
+#echo "zonecode=$zonecode"
 
 # if get zone code failed
 # print error and help/usage
