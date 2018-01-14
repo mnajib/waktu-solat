@@ -14,6 +14,7 @@
 #
 # Install:
 #    apt-get install xmlstarlet
+#    nix-env -iA nixos.xmlstarlet
 #
 # Zone:
 #    SGR01 Gombak, H.Selangor, Rawang, H.Langat, Sepang, Petaling, S.Alam
