@@ -4,25 +4,19 @@ read_dom () {
     read -d \< ENTITY CONTENT
 }
 
-#xml1=$(curl -k --silent "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=WLY01")
 curl -k --silent "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=WLY01" > /tmp/wsp.xml
 
 while read_dom; do
-#while $xml1; do
     if [[ $ENTITY = "title" || $ENTITY = "description" ]]; then
 	if [[ $CONTENT = "Imsak" || $CONTENT = "Subuh"  || $CONTENT = "Syuruk" || $CONTENT = "Zohor" || $CONTENT = "Asar" || $CONTENT = "Maghrib" || $CONTENT = "Isyak" ]]; then
 	    echo -ne "$CONTENT\t"
 	else
             echo $CONTENT
-	fi
-        #exit
+	fi	
     fi
     
     if [[ $ENTITY = "dc:date" ]]; then
         echo $CONTENT
 	echo '-------------------'
     fi
-#done < `curl -k --silent "https://www.e-solat.gov.my/index.php?r=esolatApi/xmlfeed&zon=WLY01"`
 done < /tmp/wsp.xml
-#done < $xml1
-#done
